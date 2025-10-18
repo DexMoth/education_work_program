@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.work_program.enums.Status;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

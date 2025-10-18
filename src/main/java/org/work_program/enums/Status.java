@@ -1,10 +1,10 @@
-package org.work_program.models;
+package org.work_program.enums;
 
 public enum Status {
-    DRAFT("черновик"),
-    IN_REVIEW ("на рассмотрении"),
-    APPROVED ("одобрен"),
-    ARCHIVED ("архивирован");
+    DRAFT("Черновик"),
+    IN_REVIEW ("На рассмотрении"),
+    APPROVED ("Одобрен"),
+    ARCHIVED ("Архивирован");
 
     private String title;
 

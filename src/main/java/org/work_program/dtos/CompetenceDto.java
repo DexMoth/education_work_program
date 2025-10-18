@@ -14,4 +14,11 @@ public class CompetenceDto {
     private String code;
     private String desc;
     private Long studyDirectionId;
+
+    public CompetenceDto(Long id, String code, String desc, Long studyDirectionId) {
+        this.id = id;
+        this.code = code;
+        this.desc = desc;
+        this.studyDirectionId = studyDirectionId;
+    }
 }

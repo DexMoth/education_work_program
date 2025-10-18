@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Table(name = "curriculum")
-public class CurriculumModel {
+public class CurriculumModel extends BaseModel {
     @Column(nullable = false)
     private StudyDirectionModel studyDirection;
     @Column(nullable = false)

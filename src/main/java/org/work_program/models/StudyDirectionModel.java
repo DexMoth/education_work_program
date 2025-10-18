@@ -24,5 +24,5 @@ public class StudyDirectionModel extends BaseModel{
     @Column(nullable = false)
     private LocalDate createdAt;
     @Column(nullable = false)
-    private DepartmentModel depatment;
+    private DepartmentModel department;
 }

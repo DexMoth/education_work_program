@@ -1,9 +1,17 @@
 package org.work_program.dtos;
 
-import org.work_program.models.Status;
+import org.work_program.enums.Status;
 
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class WorkProgramDto {
     private Long id;
     private Long curriculumDisciplineId;
