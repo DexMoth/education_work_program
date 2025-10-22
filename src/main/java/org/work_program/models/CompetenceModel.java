@@ -1,25 +1,19 @@
 package org.work_program.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Setter
 @Getter
 @RequiredArgsConstructor
-@NoArgsConstructor
-@Table(name = "competence")
+@Table(name = "competencies")
 public class CompetenceModel extends BaseModel {
+    @NonNull
     @Column(nullable = false)
     private String code;
+    @NonNull
     @Column(nullable = false)
     private String desc;
-    @Column(nullable = false)
-    private StudyDirectionModel studyDirection;
 }

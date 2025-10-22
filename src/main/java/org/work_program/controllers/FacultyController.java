@@ -1,5 +1,6 @@
 package org.work_program.controllers;
 
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 import org.work_program.configurations.Constants;
@@ -24,14 +25,13 @@ public class FacultyController {
         this.modelMapper = modelMapper;
     }
 
+    @Transactional
     private FacultyDto toDto(FacultyModel ent) {
-        return new FacultyDto(
-                ent.getId(),
-                ent.getName(),
-                ent.getCreatedAt()
-        );
+        var dto = modelMapper.map(ent, FacultyDto.class);
+        return dto;
     }
 
+    @Transactional
     private FacultyModel toEntity(FacultyDto dto) {
         var ent = modelMapper.map(dto, FacultyModel.class);
         return ent;
@@ -39,7 +39,9 @@ public class FacultyController {
 
     @PostMapping
     public FacultyDto create(@RequestBody @Valid FacultyDto dto) {
-        return toDto(facultyService.create(toEntity(dto)));
+        var ent = new FacultyModel();
+        ent.setName(dto.getName());
+        return toDto(facultyRepository.save(ent));
     }
 
     @GetMapping

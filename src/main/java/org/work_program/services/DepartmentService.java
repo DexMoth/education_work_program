@@ -38,9 +38,9 @@ public class DepartmentService {
     public DepartmentModel update(Long id,  DepartmentModel entity) {
         DepartmentModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(DepartmentModel.class, id));
-        entity.setName(el.getName());
-        entity.setCreatedAt(el.getCreatedAt());
-        entity.setFaculty(el.getFaculty());
+        el.setName(entity.getName());
+        el.setCreatedAt(entity.getCreatedAt());
+        el.setFaculty(entity.getFaculty());
         return repository.save(el);
     }
 

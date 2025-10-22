@@ -1,13 +1,8 @@
 package org.work_program.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -15,12 +10,16 @@ import java.time.LocalDate;
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "department")
+@Table(name = "departments")
 public class DepartmentModel extends BaseModel {
+    @NonNull
     @Column(nullable = false)
     private String name;
+    @NonNull
     @Column(nullable = false)
-    private LocalDate createdAt;
-    @Column(nullable = false)
+    private LocalDate createdAt = LocalDate.now();
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "faculty_id", nullable = false)
     private FacultyModel faculty;
 }

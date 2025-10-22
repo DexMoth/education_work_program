@@ -1,31 +1,32 @@
 package org.work_program.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Setter
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "teacher")
+@Table(name = "teachers")
 public class TeacherModel extends BaseModel{
+    @NonNull
     @Column(nullable = false)
     private String fio;
     @Column(nullable = false)
     private String phone;
     @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
+    @NonNull
+    @Column(nullable = false, name = "is_active")
     private Boolean isActive;
-    @Column(nullable = false)
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
     private DepartmentModel department;
-    @Column(nullable = false)
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "position_id", nullable = false)
     private PositionModel position;
 }

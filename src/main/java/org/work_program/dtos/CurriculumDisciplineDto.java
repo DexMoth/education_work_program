@@ -1,18 +1,17 @@
 package org.work_program.dtos;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class CurriculumDisciplineDto {
+    @NonNull
     private Long id;
+    @NonNull
     private Integer semesterNumber;
 
     // Контактная работа с преподавателем
@@ -43,8 +42,11 @@ public class CurriculumDisciplineDto {
     private String assessmentForm;
     private LocalDateTime createdAt;
 
+    @NonNull
     private Long disciplineId;
+    @NonNull
     private Long departmentId;
+    @NonNull
     private Long curriculumId;
 
     public CurriculumDisciplineDto(Long id, Integer semesterNumber, Integer totalContactHours, Integer lectureHours,

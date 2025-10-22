@@ -35,12 +35,11 @@ public class CompetenceService {
         return repository.save(entity);
     }
     @Transactional
-    public CompetenceModel update(Long id,  CompetenceModel entity) {
+    public CompetenceModel update(Long id, CompetenceModel entity) {
         CompetenceModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(CompetenceModel.class, id));
-        entity.setCode(el.getCode());
-        entity.setDesc(el.getDesc());
-        entity.setStudyDirection(el.getStudyDirection());
+        el.setCode(entity.getCode());
+        el.setDesc(entity.getDesc());
         return repository.save(el);
     }
 

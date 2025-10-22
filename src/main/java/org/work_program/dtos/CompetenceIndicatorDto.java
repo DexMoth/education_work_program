@@ -1,18 +1,18 @@
 package org.work_program.dtos;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class CompetenceIndicatorDto {
+    @NonNull
     private Long id;
+    @NonNull
     private Long competenceId;
+    @NonNull
     private String code;
+    @NonNull
     private String desc;
 
     public CompetenceIndicatorDto(Long id, Long competenceId, String code, String desc) {

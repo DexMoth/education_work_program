@@ -1,14 +1,8 @@
 package org.work_program.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.work_program.enums.Status;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,15 +10,23 @@ import java.time.LocalDateTime;
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "work_program")
+@Table(name = "work_programs")
 public class WorkProgramModel extends BaseModel{
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "curriculum_discipline_id", nullable = false)
     private CurriculumDisciplineModel curriculumDiscipline;
-    @Column(nullable = false)
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id", nullable = false)
     private TeacherModel teacher;
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id", nullable = false)
+    private StatusModel status;
+    @NonNull
     @Column(nullable = false)
-    private Status status;
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     // основные поля
     private String languages;
@@ -38,5 +40,5 @@ public class WorkProgramModel extends BaseModel{
     private String gradingSystem;
     private String educationalTechnology;
     private String logistics;
-    private String references;
+    private String references_t;
 }

@@ -39,9 +39,9 @@ public class CompetenceIndicatorService {
     public CompetenceIndicatorModel update(Long id,  CompetenceIndicatorModel entity) {
         CompetenceIndicatorModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(CompetenceIndicatorModel.class, id));
-        entity.setCompetence(el.getCompetence());
-        entity.setCode(el.getCode());
-        entity.setDesc(el.getDesc());
+        el.setCompetence(entity.getCompetence());
+        el.setCode(entity.getCode());
+        el.setDesc(entity.getDesc());
         return repository.save(el);
     }
 

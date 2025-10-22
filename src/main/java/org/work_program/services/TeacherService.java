@@ -38,12 +38,12 @@ public class TeacherService {
     public TeacherModel update(Long id,  TeacherModel entity) {
         TeacherModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(TeacherModel.class, id));
-        entity.setFio(el.getFio());
-        entity.setPhone(el.getPhone());
-        entity.setEmail(el.getEmail());
-        entity.setDepartment(el.getDepartment());
-        entity.setIsActive(el.getIsActive());
-        entity.setPosition(el.getPosition());
+        el.setFio(entity.getFio());
+        el.setPhone(entity.getPhone());
+        el.setEmail(entity.getEmail());
+        el.setDepartment(entity.getDepartment());
+        el.setIsActive(entity.getIsActive());
+        el.setPosition(entity.getPosition());
         return repository.save(el);
     }
 

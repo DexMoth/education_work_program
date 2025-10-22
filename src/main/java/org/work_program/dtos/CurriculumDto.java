@@ -7,7 +7,6 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class CurriculumDto {
     private Long id;

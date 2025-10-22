@@ -3,48 +3,48 @@ package org.work_program.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.work_program.error.NotFoundException;
-import org.work_program.models.FacultyModel;
-import org.work_program.repositories.FacultyRepository;
+import org.work_program.models.StudyFormModel;
+import org.work_program.repositories.StudyFormRepository;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
 
 @Service
-public class FacultyService {
-    private final FacultyRepository repository;
+public class StudyFormService {
+    private final StudyFormRepository repository;
 
-    public FacultyService(FacultyRepository repository) {
+    public StudyFormService(StudyFormRepository repository) {
         this.repository = repository;
     }
 
     @Transactional
-    public List<FacultyModel> getAll() {
+    public List<StudyFormModel> getAll() {
         return StreamSupport.stream(repository.findAll().spliterator(), false).toList();
     }
     @Transactional
-    public FacultyModel get(Long id) {
+    public StudyFormModel get(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new NotFoundException(FacultyModel.class, id));
+                .orElseThrow(() -> new NotFoundException(StudyFormModel.class, id));
     }
 
     @Transactional
-    public FacultyModel create(FacultyModel entity) {
+    public StudyFormModel create(StudyFormModel entity) {
         if (entity == null) {
             throw new IllegalArgumentException("Entity is null");
         }
         return repository.save(entity);
     }
     @Transactional
-    public FacultyModel update(Long id,  FacultyModel entity) {
-        FacultyModel el = repository.findById(id)
-                .orElseThrow(() -> new NotFoundException(FacultyModel.class, id));
+    public StudyFormModel update(Long id,  StudyFormModel entity) {
+        StudyFormModel el = repository.findById(id)
+                .orElseThrow(() -> new NotFoundException(StudyFormModel.class, id));
         el.setName(entity.getName());
         return repository.save(el);
     }
 
     @Transactional
-    public FacultyModel delete(Long id) {
-        final FacultyModel existsEntity = get(id);
+    public StudyFormModel delete(Long id) {
+        final StudyFormModel existsEntity = get(id);
         repository.delete(existsEntity);
         return existsEntity;
     }

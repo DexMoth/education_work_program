@@ -1,10 +1,7 @@
 package org.work_program.controllers;
 
-import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.work_program.configurations.Constants;
 import org.work_program.dtos.CompetenceDto;
@@ -13,30 +10,24 @@ import org.work_program.repositories.CompetenceRepository;
 import org.work_program.services.CompetenceService;
 
 import javax.validation.Valid;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(Constants.API_URL + "/competence")
 public class CompetenceController {
-    private final CompetenceRepository competenceRepository;
     private final CompetenceService competenceService;
     private final ModelMapper modelMapper;
 
-    public CompetenceController(CompetenceRepository competenceRepository, CompetenceService competenceService, ModelMapper modelMapper) {
-        this.competenceRepository = competenceRepository;
+    public CompetenceController(CompetenceService competenceService, ModelMapper modelMapper) {
         this.competenceService = competenceService;
         this.modelMapper = modelMapper;
     }
-
+    @Transactional
     private CompetenceDto toDto(CompetenceModel ent) {
         return new CompetenceDto(
                 ent.getId(),
                 ent.getCode(),
-                ent.getDesc(),
-                ent.getStudyDirection().getId()
+                ent.getDesc()
         );
     }
 
@@ -69,4 +60,5 @@ public class CompetenceController {
     public CompetenceDto delete(@PathVariable(name = "id") Long id) {
         return toDto(competenceService.delete(id));
     }
+
 }

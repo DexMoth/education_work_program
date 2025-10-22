@@ -5,17 +5,16 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "role")
+@Table(name = "roles")
 public class RoleModel extends BaseModel{
     @Column(nullable = false)
-    private String name;
+    private String title;
 }

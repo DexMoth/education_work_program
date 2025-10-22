@@ -42,10 +42,10 @@ public class StudyDirectionService {
         StudyDirectionModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(StudyDirectionModel.class, id));
         final DepartmentModel dep = departmentService.get(el.getDepartment().getId());
-        entity.setName(el.getName());
-        entity.setCode(el.getCode());
-        entity.setCreatedAt(el.getCreatedAt());
-        entity.setDepartment(dep);
+        el.setName(entity.getName());
+        el.setCode(entity.getCode());
+        el.setCreatedAt(entity.getCreatedAt());
+        el.setDepartment(dep);
         return repository.save(el);
     }
 

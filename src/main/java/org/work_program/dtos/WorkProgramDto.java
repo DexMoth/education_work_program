@@ -1,23 +1,24 @@
 package org.work_program.dtos;
 
-import org.work_program.enums.Status;
-
 import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 @Setter
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class WorkProgramDto {
+    @NonNull
     private Long id;
+    @NonNull
     private Long curriculumDisciplineId;
+    @NonNull
     private Long teacherId;
-    private Status status;
-    private LocalDateTime createdAt;
+    @NonNull
+    private Long statusId;
+    @NonNull
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     // основные поля
     private String languages;
@@ -31,5 +32,5 @@ public class WorkProgramDto {
     private String gradingSystem;
     private String educationalTechnology;
     private String logistics;
-    private String references;
+    private String references_t;
 }

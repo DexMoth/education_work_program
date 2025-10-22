@@ -38,9 +38,9 @@ public class DisciplineService {
     public DisciplineModel update(Long id,  DisciplineModel entity) {
         DisciplineModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(DisciplineModel.class, id));
-        entity.setName(el.getName());
-        entity.setCreatedAt(el.getCreatedAt());
-        entity.setDepartment(el.getDepartment());
+        el.setName(entity.getName());
+        el.setCreatedAt(entity.getCreatedAt());
+        el.setDepartment(entity.getDepartment());
         return repository.save(el);
     }
 

@@ -1,24 +1,21 @@
 package org.work_program.dtos;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class CompetenceDto {
+    @NonNull
     private Long id;
+    @NonNull
     private String code;
+    @NonNull
     private String desc;
-    private Long studyDirectionId;
 
-    public CompetenceDto(Long id, String code, String desc, Long studyDirectionId) {
+    public CompetenceDto(Long id, String code, String desc) {
         this.id = id;
         this.code = code;
         this.desc = desc;
-        this.studyDirectionId = studyDirectionId;
     }
 }

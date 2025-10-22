@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class FacultyDto {
     private Long id;

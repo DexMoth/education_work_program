@@ -1,20 +1,20 @@
 package org.work_program.models;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
 
 @Entity
 @Setter
 @Getter
-@NoArgsConstructor
-@Table(name = "faculties")
-public class FacultyModel extends BaseModel{
+@RequiredArgsConstructor
+@Table(name = "status")
+public class StatusModel extends BaseModel{
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private LocalDate createdAt = LocalDate.now();
 }

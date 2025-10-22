@@ -3,48 +3,48 @@ package org.work_program.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.work_program.error.NotFoundException;
-import org.work_program.models.FacultyModel;
-import org.work_program.repositories.FacultyRepository;
+import org.work_program.models.StatusModel;
+import org.work_program.repositories.StatusRepository;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
 
 @Service
-public class FacultyService {
-    private final FacultyRepository repository;
+public class StatusService {
+    private final StatusRepository repository;
 
-    public FacultyService(FacultyRepository repository) {
+    public StatusService(StatusRepository repository) {
         this.repository = repository;
     }
 
     @Transactional
-    public List<FacultyModel> getAll() {
+    public List<StatusModel> getAll() {
         return StreamSupport.stream(repository.findAll().spliterator(), false).toList();
     }
     @Transactional
-    public FacultyModel get(Long id) {
+    public StatusModel get(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new NotFoundException(FacultyModel.class, id));
+                .orElseThrow(() -> new NotFoundException(StatusModel.class, id));
     }
 
     @Transactional
-    public FacultyModel create(FacultyModel entity) {
+    public StatusModel create(StatusModel entity) {
         if (entity == null) {
             throw new IllegalArgumentException("Entity is null");
         }
         return repository.save(entity);
     }
     @Transactional
-    public FacultyModel update(Long id,  FacultyModel entity) {
-        FacultyModel el = repository.findById(id)
-                .orElseThrow(() -> new NotFoundException(FacultyModel.class, id));
+    public StatusModel update(Long id,  StatusModel entity) {
+        StatusModel el = repository.findById(id)
+                .orElseThrow(() -> new NotFoundException(StatusModel.class, id));
         el.setName(entity.getName());
         return repository.save(el);
     }
 
     @Transactional
-    public FacultyModel delete(Long id) {
-        final FacultyModel existsEntity = get(id);
+    public StatusModel delete(Long id) {
+        final StatusModel existsEntity = get(id);
         repository.delete(existsEntity);
         return existsEntity;
     }

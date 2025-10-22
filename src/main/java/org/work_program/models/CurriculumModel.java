@@ -1,13 +1,8 @@
 package org.work_program.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Setter
@@ -16,12 +11,18 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "curriculum")
 public class CurriculumModel extends BaseModel {
-    @Column(nullable = false)
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "study_direction_id", nullable = false)
     private StudyDirectionModel studyDirection;
-    @Column(nullable = false)
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "study_form_id", nullable = false)
     private StudyFormModel studyForm;
+    @NonNull
     @Column(nullable = false)
     private String academicYear;
+    @NonNull
     @Column(nullable = false)
     private String name;
 }

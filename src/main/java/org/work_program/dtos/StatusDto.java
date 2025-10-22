@@ -5,11 +5,11 @@ import lombok.*;
 @Setter
 @Getter
 @NoArgsConstructor
-public class PositionDto {
+public class StatusDto {
     private Long id;
     private String name;
 
-    public PositionDto(Long id, String name) {
+    public StatusDto(Long id, String name) {
         this.id = id;
         this.name = name;
     }

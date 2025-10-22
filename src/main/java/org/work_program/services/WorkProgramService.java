@@ -38,22 +38,22 @@ public class WorkProgramService {
     public WorkProgramModel update(Long id,  WorkProgramModel entity) {
         WorkProgramModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(WorkProgramModel.class, id));
-        entity.setCurriculumDiscipline(el.getCurriculumDiscipline());
-        entity.setTeacher(el.getTeacher());
-        entity.setStatus(el.getStatus());
-        entity.setCreatedAt(el.getCreatedAt());
-        entity.setLanguages(el.getLanguages());
-        entity.setGoals(el.getGoals());
-        entity.setTasks(el.getTasks());
-        entity.setCompetencies(el.getCompetencies());
-        entity.setLearningOutcomes(el.getLearningOutcomes());
-        entity.setRequirements(el.getRequirements());
-        entity.setContentByWeeks(el.getContentByWeeks());
-        entity.setAssessmentTools(el.getAssessmentTools());
-        entity.setGradingSystem(el.getGradingSystem());
-        entity.setEducationalTechnology(el.getEducationalTechnology());
-        entity.setLogistics(el.getLogistics());
-        entity.setReferences(el.getReferences());
+        el.setCurriculumDiscipline(entity.getCurriculumDiscipline());
+        el.setTeacher(entity.getTeacher());
+        el.setStatus(entity.getStatus());
+        el.setCreatedAt(entity.getCreatedAt());
+        el.setLanguages(entity.getLanguages());
+        el.setGoals(entity.getGoals());
+        el.setTasks(entity.getTasks());
+        el.setCompetencies(entity.getCompetencies());
+        el.setLearningOutcomes(entity.getLearningOutcomes());
+        el.setRequirements(entity.getRequirements());
+        el.setContentByWeeks(entity.getContentByWeeks());
+        el.setAssessmentTools(entity.getAssessmentTools());
+        el.setGradingSystem(entity.getGradingSystem());
+        el.setEducationalTechnology(entity.getEducationalTechnology());
+        el.setLogistics(entity.getLogistics());
+        el.setReferences_t(entity.getReferences_t());
         return repository.save(el);
     }
 

@@ -1,15 +1,16 @@
 package org.work_program.dtos;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class StudyFormDto {
     private Long id;
     private String name;
+
+    public StudyFormDto(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
