@@ -27,7 +27,7 @@ public class CompetenceController {
         return new CompetenceDto(
                 ent.getId(),
                 ent.getCode(),
-                ent.getDesc()
+                ent.getDescription()
         );
     }
 

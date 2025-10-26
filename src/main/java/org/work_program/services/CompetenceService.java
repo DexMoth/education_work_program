@@ -39,7 +39,7 @@ public class CompetenceService {
         CompetenceModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(CompetenceModel.class, id));
         el.setCode(entity.getCode());
-        el.setDesc(entity.getDesc());
+        el.setDescription(entity.getDescription());
         return repository.save(el);
     }
 

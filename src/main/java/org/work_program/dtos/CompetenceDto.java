@@ -11,11 +11,11 @@ public class CompetenceDto {
     @NonNull
     private String code;
     @NonNull
-    private String desc;
+    private String description;
 
-    public CompetenceDto(Long id, String code, String desc) {
+    public CompetenceDto(Long id, String code, String description) {
         this.id = id;
         this.code = code;
-        this.desc = desc;
+        this.description = description;
     }
 }

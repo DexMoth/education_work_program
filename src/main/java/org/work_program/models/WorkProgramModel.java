@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "work_programs")
 public class WorkProgramModel extends BaseModel{
-    @NonNull
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "curriculum_discipline_id", nullable = false)
     private CurriculumDisciplineModel curriculumDiscipline;

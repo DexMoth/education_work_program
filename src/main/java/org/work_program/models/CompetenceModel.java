@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 @RequiredArgsConstructor
 @Table(name = "competencies")
 public class CompetenceModel extends BaseModel {
@@ -15,5 +16,5 @@ public class CompetenceModel extends BaseModel {
     private String code;
     @NonNull
     @Column(nullable = false)
-    private String desc;
+    private String description;
 }

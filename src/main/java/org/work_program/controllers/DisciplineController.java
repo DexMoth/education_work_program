@@ -3,6 +3,7 @@ package org.work_program.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 import org.work_program.configurations.Constants;
+import org.work_program.dtos.CompetenceDto;
 import org.work_program.dtos.DisciplineDto;
 import org.work_program.models.CompetenceModel;
 import org.work_program.models.DisciplineModel;
@@ -37,7 +38,11 @@ public class DisciplineController {
                     ent.getDepartment().getId(),
                     ent.getCreatedAt(),
                     ent.getCompetencies().stream()
-                            .map(CompetenceModel::getId)
+                            .map(c -> new CompetenceDto(
+                                    c.getId(),
+                                    c.getCode(),
+                                    c.getDescription()
+                            ))
                             .collect(Collectors.toSet())
             );
         } else {
@@ -57,7 +62,7 @@ public class DisciplineController {
             var competencies = dto.getCompetenciesIds();
             if( !competencies.isEmpty()) {
                 for (var c : competencies){
-                    ent.addCompetence(competenceService.get(c));
+                    ent.addCompetence(modelMapper.map(c, CompetenceModel.class));
                 }
             }
         }

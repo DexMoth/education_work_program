@@ -54,6 +54,11 @@ public class CurriculumController {
         return toDto(curriculumService.get(id));
     }
 
+    @GetMapping("/{id}/discipline")
+    public CurriculumDto getWithDiscipline(@PathVariable(name = "id") Long id) {
+        return toDto(curriculumService.get(id));
+    }
+
     @PutMapping("/{id}")
     public CurriculumDto update(@PathVariable(name = "id") Long id, @RequestBody CurriculumDto dto) {
         return toDto(curriculumService.update(id, toEntity(dto)));

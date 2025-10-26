@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @RequiredArgsConstructor
-
+@NoArgsConstructor
 @Table(name = "curriculum_disciplines")
 public class CurriculumDisciplineModel extends BaseModel {
     private Integer semesterNumber;

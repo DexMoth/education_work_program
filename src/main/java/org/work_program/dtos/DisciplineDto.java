@@ -14,7 +14,7 @@ public class DisciplineDto {
     private String name;
     private Long departmentId;
     private LocalDate createdAt;
-    private Set<Long> competenciesIds = new HashSet<>();
+    private Set<CompetenceDto> competenciesIds = new HashSet<>();
 
     public DisciplineDto(Long id, String name, Long departmentId, LocalDate createdAt) {
         this.id = id;
@@ -24,7 +24,7 @@ public class DisciplineDto {
     }
 
     public DisciplineDto(Long id, String name, Long departmentId, LocalDate createdAt,
-                         Set<Long> competenciesIds) {
+                         Set<CompetenceDto> competenciesIds) {
         this.id = id;
         this.name = name;
         this.departmentId = departmentId;

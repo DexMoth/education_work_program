@@ -24,7 +24,7 @@ public class DisciplineModel extends BaseModel{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
     private DepartmentModel department;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "discipline_competencies",
             joinColumns = @JoinColumn(name = "discipline_id"),
