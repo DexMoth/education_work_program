@@ -71,4 +71,9 @@ public class CurriculumDisciplineService {
         repository.delete(existsEntity);
         return existsEntity;
     }
+
+    @Transactional
+    public List<CurriculumDisciplineModel> getByCurriculumId(Long curriculumId) {
+        return repository.findByCurriculumId(curriculumId);
+    }
 }

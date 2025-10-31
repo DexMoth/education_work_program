@@ -1,9 +1,12 @@
 package org.work_program.controllers;
 
+import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 import org.work_program.configurations.Constants;
 import org.work_program.dtos.WorkProgramDto;
+import org.work_program.models.TeacherModel;
 import org.work_program.models.WorkProgramModel;
 import org.work_program.repositories.WorkProgramRepository;
 import org.work_program.services.WorkProgramService;
@@ -40,8 +43,31 @@ public class WorkProgramController {
     }
 
     @GetMapping
-    public List<WorkProgramDto> getAll() {
-        return workProgramService.getAll().stream().map(this::toDto).toList();
+    public List<WorkProgramDto> getAll(
+            @RequestParam(required = false) Long departmentId,
+            @RequestParam(required = false) Long curriculumId) {
+        if (departmentId != null || curriculumId != null) {
+            return workProgramService.getFilteredWorkPrograms(departmentId, curriculumId)
+                    .stream()
+                    .map(this::toDto)
+                    .toList();
+        } else {
+            return workProgramService.getAll().stream().map(this::toDto).toList();
+        }
+    }
+
+    @GetMapping("/my")
+    public ResponseEntity<List<WorkProgramDto>> getMy(HttpSession session) {
+        TeacherModel currentTeacher = (TeacherModel) session.getAttribute("teacher");
+        if (currentTeacher == null) {
+            return ResponseEntity.status(401).build(); // Не авторизован
+        }
+
+        List<WorkProgramModel> myPrograms = workProgramService.getMyWorkPrograms(currentTeacher.getId());
+        List<WorkProgramDto> dtos = myPrograms.stream()
+                .map(this::toDto)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/{id}")

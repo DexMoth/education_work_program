@@ -1,12 +1,17 @@
 package org.work_program.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.work_program.configurations.Constants;
 import org.work_program.dtos.CompetenceDto;
 import org.work_program.dtos.DisciplineDto;
+import org.work_program.dtos.WorkProgramDto;
 import org.work_program.models.CompetenceModel;
 import org.work_program.models.DisciplineModel;
+import org.work_program.models.TeacherModel;
+import org.work_program.models.WorkProgramModel;
 import org.work_program.repositories.DisciplineRepository;
 import org.work_program.services.CompetenceService;
 import org.work_program.services.DisciplineService;
@@ -22,12 +27,14 @@ public class DisciplineController {
     private final DisciplineService disciplineService;
     private final CompetenceService competenceService;
     private final ModelMapper modelMapper;
+    private final CompetenceController competenceController;
 
-    public DisciplineController(DisciplineRepository disciplineRepository, DisciplineService disciplineService, CompetenceService competenceService, ModelMapper modelMapper) {
+    public DisciplineController(DisciplineRepository disciplineRepository, DisciplineService disciplineService, CompetenceService competenceService, ModelMapper modelMapper, CompetenceController competenceController) {
         this.disciplineRepository = disciplineRepository;
         this.disciplineService = disciplineService;
         this.competenceService = competenceService;
         this.modelMapper = modelMapper;
+        this.competenceController = competenceController;
     }
 
     private DisciplineDto toDto(DisciplineModel ent) {
@@ -82,6 +89,14 @@ public class DisciplineController {
     @GetMapping("/{id}")
     public DisciplineDto get(@PathVariable(name = "id") Long id) {
         return toDto(disciplineService.get(id));
+    }
+
+    @GetMapping("/{id}/competencies")
+    public List<CompetenceDto> getWithCompetencies(@PathVariable(name = "id") Long id) {
+        var competencies = disciplineService.getCompetenciesByDisciplineId(id);
+        return competencies.stream()
+                .map(competenceController::toDto)
+                .toList();
     }
 
     @PutMapping("/{id}")

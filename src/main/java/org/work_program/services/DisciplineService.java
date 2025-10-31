@@ -2,10 +2,13 @@ package org.work_program.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.work_program.dtos.CompetenceDto;
 import org.work_program.error.NotFoundException;
+import org.work_program.models.CompetenceModel;
 import org.work_program.models.DisciplineModel;
 import org.work_program.repositories.DisciplineRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -49,5 +52,11 @@ public class DisciplineService {
         final DisciplineModel existsEntity = get(id);
         repository.delete(existsEntity);
         return existsEntity;
+    }
+
+    public List<CompetenceModel> getCompetenciesByDisciplineId(Long id) {
+        DisciplineModel discipline = repository.findByIdWithCompetencesAndIndicators(id)
+                .orElseThrow(() -> new RuntimeException("Дисциплина не найдена"));
+        return new ArrayList<>(discipline.getCompetencies());
     }
 }

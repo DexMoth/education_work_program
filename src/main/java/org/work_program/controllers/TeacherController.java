@@ -37,9 +37,12 @@ public class TeacherController {
                 ent.getFio(),
                 ent.getPhone(),
                 ent.getEmail(),
+                ent.getLogin(),
+                ent.getPassword(),
                 ent.getIsActive(),
                 ent.getDepartment().getId(),
-                ent.getPosition().getId()
+                ent.getPosition().getId(),
+                ent.getRole().getId()
         );
     }
 
@@ -62,9 +65,12 @@ public class TeacherController {
                 teacher.getFio(),
                 teacher.getPhone(),
                 teacher.getEmail(),
+                teacher.getLogin(),
+                teacher.getPassword(),
                 teacher.getIsActive(),
                 teacher.getDepartment().getId(),
-                teacher.getPosition().getId()
+                teacher.getPosition().getId(),
+                teacher.getRole().getId()
         ));
     }
 
@@ -86,9 +92,12 @@ public class TeacherController {
             teacher.setFio(request.getFio());
             teacher.setPhone(request.getPhone());
             teacher.setEmail(request.getEmail());
+            teacher.setLogin(request.getLogin());
+            teacher.setPassword(request.getPassword());
             teacher.setIsActive(request.getIsActive());
             teacher.setDepartment(request.getDepartment());
             teacher.setPosition(request.getPosition());
+            teacher.setRole(request.getRole());
             System.out.println(teacher);
 
             // Сохранение пользователя

@@ -44,6 +44,7 @@ public class TeacherService {
         el.setDepartment(entity.getDepartment());
         el.setIsActive(entity.getIsActive());
         el.setPosition(entity.getPosition());
+        el.setRole(entity.getRole());
         return repository.save(el);
     }
 

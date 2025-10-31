@@ -23,7 +23,7 @@ public class CompetenceController {
         this.modelMapper = modelMapper;
     }
     @Transactional
-    private CompetenceDto toDto(CompetenceModel ent) {
+    protected CompetenceDto toDto(CompetenceModel ent) {
         return new CompetenceDto(
                 ent.getId(),
                 ent.getCode(),

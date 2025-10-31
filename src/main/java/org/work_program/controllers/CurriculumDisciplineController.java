@@ -66,6 +66,14 @@ public class CurriculumDisciplineController {
         return curriculumDisciplineService.getAll().stream().map(this::toDto).toList();
     }
 
+    @GetMapping("/byCurriculum/{curriculumId}")
+    public List<CurriculumDisciplineDto> getByCurriculumId(@PathVariable(name = "curriculumId") Long curriculumId) {
+        return curriculumDisciplineService.getByCurriculumId(curriculumId)
+                .stream()
+                .map(this::toDto)
+                .toList();
+    }
+
     @GetMapping("/{id}")
     public CurriculumDisciplineDto get(@PathVariable(name = "id") Long id) {
         return toDto(curriculumDisciplineService.get(id));

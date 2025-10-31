@@ -4,6 +4,9 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -17,4 +20,6 @@ public class CompetenceModel extends BaseModel {
     @NonNull
     @Column(nullable = false)
     private String description;
+    @OneToMany(mappedBy = "competence", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CompetenceIndicatorModel> indicators = new ArrayList<>();
 }
