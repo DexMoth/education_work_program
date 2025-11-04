@@ -13,12 +13,12 @@ public class CompetenceIndicatorDto {
     @NonNull
     private String code;
     @NonNull
-    private String desc;
+    private String description;
 
-    public CompetenceIndicatorDto(Long id, Long competenceId, String code, String desc) {
+    public CompetenceIndicatorDto(Long id, Long competenceId, String code, String description) {
         this.id = id;
         this.competenceId = competenceId;
         this.code = code;
-        this.desc = desc;
+        this.description = description;
     }
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 @Setter
 @Getter
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Table(name = "competence_indicators")
 public class CompetenceIndicatorModel extends BaseModel{
     @NonNull
@@ -19,5 +20,5 @@ public class CompetenceIndicatorModel extends BaseModel{
     private String code;
     @NonNull
     @Column(nullable = false)
-    private String desc;
+    private String description;
 }

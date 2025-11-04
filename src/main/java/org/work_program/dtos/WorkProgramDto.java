@@ -12,11 +12,10 @@ public class WorkProgramDto {
     @NonNull
     private Long id;
     @NonNull
-    private Long curriculumDisciplineId;
-    @NonNull
     private Long teacherId;
     @NonNull
     private Long statusId;
+    private Long curriculumId;
     @NonNull
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -27,7 +26,12 @@ public class WorkProgramDto {
     private String competencies;
     private String learningOutcomes;
     private String requirements;
-    private String contentByWeeks;
+    private String thematicPlan;
+    private String theoreticalCourse;
+    private String practicalWork;
+    private String laboratoryWorkshop;
+    private String courseProject;
+    private String independentWork;
     private String assessmentTools;
     private String gradingSystem;
     private String educationalTechnology;

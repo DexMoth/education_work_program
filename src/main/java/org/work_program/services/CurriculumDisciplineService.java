@@ -38,6 +38,7 @@ public class CurriculumDisciplineService {
     public CurriculumDisciplineModel update(Long id,  CurriculumDisciplineModel entity) {
         CurriculumDisciplineModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(CurriculumDisciplineModel.class, id));
+        el.setStudyForm(entity.getStudyForm());
         el.setCurriculum(entity.getCurriculum());
         el.setDiscipline(entity.getDiscipline());
         el.setCredits(entity.getCredits());

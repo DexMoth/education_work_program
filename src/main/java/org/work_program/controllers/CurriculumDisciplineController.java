@@ -27,6 +27,7 @@ public class CurriculumDisciplineController {
     private CurriculumDisciplineDto toDto(CurriculumDisciplineModel ent) {
         return new CurriculumDisciplineDto(
                 ent.getId(),
+                ent.getStudyForm(),
                 ent.getSemesterNumber(),
                 ent.getTotalContactHours(),
                 ent.getLectureHours(),

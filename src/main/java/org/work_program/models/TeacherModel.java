@@ -33,7 +33,6 @@ public class TeacherModel extends BaseModel{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false)
     private PositionModel position;
-    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
     private RoleModel role;

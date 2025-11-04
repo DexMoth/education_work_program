@@ -13,6 +13,8 @@ public class CurriculumDisciplineDto {
     private Long id;
     @NonNull
     private Integer semesterNumber;
+    @NonNull
+    private String studyForm;
 
     // Контактная работа с преподавателем
     private Integer totalContactHours;
@@ -46,16 +48,16 @@ public class CurriculumDisciplineDto {
     private Long disciplineId;
     @NonNull
     private Long departmentId;
-    @NonNull
     private Long curriculumId;
 
-    public CurriculumDisciplineDto(Long id, Integer semesterNumber, Integer totalContactHours, Integer lectureHours,
+    public CurriculumDisciplineDto(Long id, String studyForm, Integer semesterNumber, Integer totalContactHours, Integer lectureHours,
                                    Integer practiceHours, Integer labHours, Integer totalSelfStudyHours, Integer consultationHours,
                                    Integer theoryStudyHours, Integer courseProjectHours, Integer rgrHours, Integer essayHours,
                                    Integer practicePreparationHours, Integer labPreparationHours, Integer intermediateAssessmentHours,
                                    Integer totalHours, Integer credits, String assessmentForm, LocalDateTime createdAt,
                                    Long disciplineId, Long departmentId, Long curriculumId) {
         this.id = id;
+        this.studyForm = studyForm;
         this.semesterNumber = semesterNumber;
         this.totalContactHours = totalContactHours;
         this.lectureHours = lectureHours;

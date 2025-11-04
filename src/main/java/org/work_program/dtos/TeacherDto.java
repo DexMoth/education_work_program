@@ -23,7 +23,6 @@ public class TeacherDto {
     private Long departmentId;
     @NonNull
     private Long positionId;
-    @NonNull
     private Long roleId;
 
     public TeacherDto(Long id, String fio, String phone, String email, String login, String password, Boolean isActive, Long departmentId, Long positionId, Long roleId) {

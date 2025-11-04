@@ -85,7 +85,7 @@ public class AuthController {
 
         // отправка email
         emailService.sendEmail(teacher.getEmail(), "Код подтверждения", "Код подтверждения: " + code);
-        System.out.println("Email отправлен на " + teacher.getEmail());
+        System.out.println("Email отправлен на " + teacher.getEmail() + ", код " + code);
 
 
         Map<String, Object> response = new HashMap<>();

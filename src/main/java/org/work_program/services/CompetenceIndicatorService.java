@@ -41,7 +41,7 @@ public class CompetenceIndicatorService {
                 .orElseThrow(() -> new NotFoundException(CompetenceIndicatorModel.class, id));
         el.setCompetence(entity.getCompetence());
         el.setCode(entity.getCode());
-        el.setDesc(entity.getDesc());
+        el.setDescription(entity.getDescription());
         return repository.save(el);
     }
 

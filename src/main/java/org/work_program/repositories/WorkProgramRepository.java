@@ -14,16 +14,18 @@ public interface WorkProgramRepository extends JpaRepository<WorkProgramModel, L
     @Query("SELECT wp FROM WorkProgramModel wp WHERE wp.teacher.department.id = :departmentId")
     List<WorkProgramModel> findByDepartment(Long departmentId);
 
-    @Query("SELECT wp FROM WorkProgramModel wp WHERE wp.curriculumDiscipline.curriculum.id = :curriculumId")
-    List<WorkProgramModel> findByCurriculum(Long curriculumId);
+    @Query("SELECT wp FROM WorkProgramModel wp WHERE wp.curriculum.studyDirection.id = :studyDirectionId")
+    List<WorkProgramModel> findByStudyDirection(Long studyDirectionId);
 
-    @Query("SELECT wp FROM WorkProgramModel wp WHERE wp.teacher.department.id = :departmentId AND wp.curriculumDiscipline.curriculum.id = :curriculumId")
-    List<WorkProgramModel> findByDepartmentAndCurriculum(Long departmentId, Long curriculumId);
+    @Query("SELECT wp FROM WorkProgramModel wp WHERE wp.teacher.department.id = :departmentId AND wp.curriculum.studyDirection.id = :studyDirectionId")
+    List<WorkProgramModel> findByDepartmentAndStudyDirection(Long departmentId, Long studyDirectionId);
 
     @Query("SELECT wp FROM WorkProgramModel wp " +
-            "LEFT JOIN FETCH wp.curriculumDiscipline cd " +
-            "LEFT JOIN FETCH cd.curriculum " +
-            "LEFT JOIN FETCH cd.discipline " +
+            "LEFT JOIN FETCH wp.curriculum c " +
+            "LEFT JOIN FETCH c.studyDirection " +
+            "LEFT JOIN FETCH c.studyForm " +
+            "LEFT JOIN FETCH wp.teacher " +
+            "LEFT JOIN FETCH wp.status " +
             "WHERE wp.id = :id")
     Optional<WorkProgramModel> findByIdWithRelations(@Param("id") Long id);
 }

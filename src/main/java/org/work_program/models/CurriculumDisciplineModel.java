@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @Table(name = "curriculum_disciplines")
 public class CurriculumDisciplineModel extends BaseModel {
     private Integer semesterNumber;
+    @NonNull
+    private String studyForm;
 
     // Контактная работа с преподавателем
     private Integer totalContactHours;

@@ -45,9 +45,9 @@ public class WorkProgramController {
     @GetMapping
     public List<WorkProgramDto> getAll(
             @RequestParam(required = false) Long departmentId,
-            @RequestParam(required = false) Long curriculumId) {
-        if (departmentId != null || curriculumId != null) {
-            return workProgramService.getFilteredWorkPrograms(departmentId, curriculumId)
+            @RequestParam(required = false) Long studyDirectionId) {
+        if (departmentId != null || studyDirectionId != null) {
+            return workProgramService.getFilteredWorkPrograms(departmentId, studyDirectionId)
                     .stream()
                     .map(this::toDto)
                     .toList();

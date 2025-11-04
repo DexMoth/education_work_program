@@ -29,7 +29,7 @@ public class CompetenceIndicatorController {
                 ent.getId(),
                 ent.getCompetence().getId(),
                 ent.getCode(),
-                ent.getDesc()
+                ent.getDescription()
         );
     }
 

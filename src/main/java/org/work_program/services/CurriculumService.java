@@ -38,6 +38,7 @@ public class CurriculumService {
     public CurriculumModel update(Long id,  CurriculumModel entity) {
         CurriculumModel el = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(CurriculumModel.class, id));
+
         el.setStudyDirection(entity.getStudyDirection());
         el.setStudyForm(entity.getStudyForm());
         el.setAcademicYear(entity.getAcademicYear());

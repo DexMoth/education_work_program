@@ -12,10 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "work_programs")
 public class WorkProgramModel extends BaseModel{
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "curriculum_discipline_id", nullable = false)
-    private CurriculumDisciplineModel curriculumDiscipline;
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id", nullable = false)
@@ -24,6 +20,10 @@ public class WorkProgramModel extends BaseModel{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", nullable = false)
     private StatusModel status;
+    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "curriculum_id", nullable = false)
+    private CurriculumModel curriculum;
     @NonNull
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -35,7 +35,12 @@ public class WorkProgramModel extends BaseModel{
     private String competencies;
     private String learningOutcomes;
     private String requirements;
-    private String contentByWeeks;
+    private String thematicPlan;
+    private String theoreticalCourse;
+    private String practicalWork;
+    private String laboratoryWorkshop;
+    private String courseProject;
+    private String independentWork;
     private String assessmentTools;
     private String gradingSystem;
     private String educationalTechnology;
