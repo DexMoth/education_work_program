@@ -17,7 +17,8 @@
    2. в терминале: <br>
    `npm install bootstrap` <br>
    `npm install vue` <br>
-   `npm install pinia`
+   `npm install pinia` <br>
+   `npm install jspdf@2.5.1`
    3. если будет ругаться, что нет какого-то пакета, то также его установить
    4. запустить через терминал:
   ` npm run dev`
